@@ -13,7 +13,7 @@ controller and server:
      image: alpine:3
      command: [sh, -c]
      args:
-       - wget -qO k8xauth https://github.com/trhyo/k8xauth/releases/download/v0.0.1/k8xauth-v0.0.1-linux-amd64 && chmod +x k8xauth && mv k8xauth /argo-k8xauth/
+       - wget -qO k8xauth https://github.com/trhyo/k8xauth/releases/download/v0.1.0/k8xauth-v0.1.0-linux-amd64 && chmod +x k8xauth && mv k8xauth /argo-k8xauth/
      volumeMounts:
        - mountPath: /argo-k8xauth
          name: argo-k8xauth
