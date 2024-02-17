@@ -11,8 +11,8 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sts v1.27.0
 	github.com/spf13/cobra v1.7.0
 	github.com/trhyo/azidentity-static-source v0.0.4
-	k8s.io/apimachinery v0.29.0
-	k8s.io/client-go v0.28.3
+	k8s.io/apimachinery v0.29.2
+	k8s.io/client-go v0.29.2
 )
 
 require (
