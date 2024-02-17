@@ -38,8 +38,8 @@ require (
 	go.opentelemetry.io/otel v1.21.0 // indirect
 	go.opentelemetry.io/otel/metric v1.21.0 // indirect
 	go.opentelemetry.io/otel/trace v1.21.0 // indirect
-	golang.org/x/crypto v0.18.0 // indirect
-	golang.org/x/sys v0.16.0 // indirect
+	golang.org/x/crypto v0.19.0 // indirect
+	golang.org/x/sys v0.17.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240116215550-a9fa1716bcac // indirect
 	google.golang.org/grpc v1.60.1 // indirect
@@ -68,8 +68,8 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.step.sm/crypto v0.42.0
-	golang.org/x/net v0.20.0 // indirect
-	golang.org/x/oauth2 v0.16.0
+	golang.org/x/net v0.21.0 // indirect
+	golang.org/x/oauth2 v0.17.0
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/api v0.157.0
 	gopkg.in/inf.v0 v0.9.1 // indirect
