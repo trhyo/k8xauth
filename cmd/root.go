@@ -14,10 +14,10 @@ var (
 
 var RootCmd = &cobra.Command{
 	Use:   "k8xauth",
-	Short: "ArgoCD external cluster cross-cloud authenticator",
-	Long: `ArgoCD execProviderConfig program for Identity based
-authenticating  with external clusters without the need
-of using long-term credentials.`,
+	Short: "Kubernetes cluster cross-cloud authenticator",
+	Long: `Kubernetes execProviderConfig authenticator for Identity based
+authentication of clusters running on different cloud providers or on premise
+without the need to use long-term credentials.`,
 	CompletionOptions: cobra.CompletionOptions{HiddenDefaultCmd: true},
 	Version:           version,
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {

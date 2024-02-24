@@ -17,7 +17,7 @@ var aksCmd = &cobra.Command{
 	Short: "Fetches Azure AKS cluster credentials",
 	Long: `Fetches Azure AKS cluster credentials from GKE Workload Identity or EKS IRSA
 
-This is useful for cases where ArgoCD server is running in GKE or EKS cluster
+This is useful for cases where Kubernetes client is running in GKE or EKS cluster
 and needs to manage external Azure AKS cluster(s)`,
 	Example: `k8xauth aks --tenantid "12345678-1234-1234-1234-123456789abc" --clientid "12345678-1234-1234-1234-123456789abc"`,
 	Run: func(cmd *cobra.Command, args []string) {

@@ -13,7 +13,7 @@ var gkeCmd = &cobra.Command{
 	Short: "Fetches Google Cloud GKE cluster credentials",
 	Long: `Fetches Google Cloud GKE cluster credentials from AKS Workload Identity or EKS IRSA
 
-This is useful for cases where ArgoCD server is running in AKS or EKS cluster
+This is useful for cases where  Kubernetes client is running in AKS or EKS cluster
 and needs to manage external Google Cloud GKE cluster(s)`,
 	Example: `k8xauth gke --projectid "12345678901" --poolid "gcp-fed-pool-id" --providerid "gcp-fed-provider-id" --serviceaccount "gcp-sa-name@gcp-project-name.iam.gserviceaccount.com"`,
 	Run: func(cmd *cobra.Command, args []string) {
