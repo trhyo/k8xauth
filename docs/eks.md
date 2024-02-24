@@ -6,7 +6,7 @@ This document covers the case of retrieving Kubernetes credentials for an AWS EK
 For this application running on a Google Cloud GKE cluster/GCE VM:
 1. A Google Cloud environment configured with IAM identity. This could be a VM instance using a service account identity or a GKE pod configured with GKE workload identity. Workload identity can be easily configured using the official workload identity [terraform module](https://registry.terraform.io/modules/terraform-google-modules/kubernetes-engine/google/latest/submodules/workload-identity).
 2. An AWS role that is configured to trust the GCP service account used in the environment running the program. This involves setting up AWS IAM role trust policy for `sts:AssumeRoleWithWebIdentity` action specifying `accounts.google.com` federated principal (more documentation [here](https://gist.github.com/wvanderdeijl/c6a9a9f26149cea86039b3608e3556c1)).
-3. The IAM role from step 3. having appropriate permissions (policies attached) for EKS cluster(s) management.
+3. The IAM role from step 2. having appropriate permissions (policies attached) for EKS cluster(s) management.
 
 ### Prerequisites for AKS source authentication
 For this application running on a Azure AKS cluster:
@@ -37,39 +37,5 @@ For this application running on a Azure AKS cluster:
 
 Example:
 ```bash
-$ k8xauth --rolearn "arn:aws:iam::123456789012:role/argocdrole" --cluster "my-eks-cluster-name" --stsregion "us-east-1"
-```
-## ArgoCD Configuration
-Create a secret defining secret in your ArgoCD namespace where `data.config` is base64 encoded section as in following example.
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: my-eks-cluster-name-secret
-  labels:
-    argocd.argoproj.io/secret-type: cluster
-type: Opaque
-stringData:
-  name: my-eks-cluster-name
-  server: https://213456423213456789456123ABCDEF.grx.us-east-1.eks.amazonaws.com
-  config: |
-    {
-      "execProviderConfig": {
-        "command": "k8xauth",
-        "args": [
-            "--rolearn",
-            "arn:aws:iam::123456789012:role/argocdrole",
-            "--cluster",
-            "my-eks-cluster-name",
-            "--stsregion",
-            "us-east-1"
-        ],
-        "apiVersion": "client.authentication.k8s.io/v1beta1",
-        "installHint": "k8xauth missing"
-      },
-      "tlsClientConfig": {
-        "insecure": false,
-        "caData": "base64_encoded_ca_data"
-      }
-    }
+$ k8xauth eks --rolearn "arn:aws:iam::123456789012:role/argocdrole" --cluster "my-eks-cluster-name" --stsregion "us-east-1"
 ```
