@@ -13,7 +13,7 @@ controller and server:
      image: alpine:3
      command: [sh, -c]
      args:
-       - wget -qO k8xauth https://github.com/trhyo/k8xauth/releases/download/v0.1.0/k8xauth-v0.1.0-linux-amd64 && chmod +x k8xauth && mv k8xauth /argo-k8xauth/
+       - wget -qO k8xauth https://github.com/trhyo/k8xauth/releases/download/v0.1.1/k8xauth-v0.1.1-linux-amd64 && chmod +x k8xauth && mv k8xauth /argo-k8xauth/
      volumeMounts:
        - mountPath: /argo-k8xauth
          name: argo-k8xauth
@@ -28,7 +28,9 @@ controller and server:
      emptyDir: {}
 ```
 ## Usage
-ArgoCD can be configured to use exec provider to fetch credentials for external clusters by creating a kubernetes secret with target cluster and exec plugin configuration. Example:
+ArgoCD can be configured to use exec provider to fetch credentials for external clusters by creating a kubernetes secret with target cluster and exec plugin configuration.
+
+### EKS cluster
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -45,6 +47,7 @@ stringData:
       "execProviderConfig": {
         "command": "k8xauth",
         "args": [
+            "eks",
             "--rolearn",
             "arn:aws:iam::123456789012:role/argocdrole",
             "--cluster",
@@ -53,7 +56,73 @@ stringData:
             "us-east-2"
         ],
         "apiVersion": "client.authentication.k8s.io/v1beta1",
-        "installHint": "k8xauth missing. For installation follow https://github.com/trhyo/xcloud-k8s-exec-credentials"
+        "installHint": "k8xauth missing. For installation follow https://github.com/trhyo/k8xauth"
+      },
+      "tlsClientConfig": {
+        "insecure": false,
+        "caData": "base64_encoded_ca_data"
+      }
+    }
+```
+### GKE cluster
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-gke-cluster-name-secret
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+type: Opaque
+stringData:
+  name: my-gke-cluster-name
+  server: https://192.0.2.1
+  config: |
+    {
+      "execProviderConfig": {
+        "command": "k8xauth",
+        "args": [
+            "gke",
+            "--projectid",
+            "123456789012",
+            "--poolid",
+            "my-wli-fed-pool-id",
+            "--providerid",
+            "my-wli-fed-provider-id"
+        ],
+        "apiVersion": "client.authentication.k8s.io/v1beta1",
+        "installHint": "k8xauth missing. For installation follow https://github.com/trhyo/k8xauth"
+      },
+      "tlsClientConfig": {
+        "insecure": false,
+        "caData": "base64_encoded_ca_data"
+      }
+    }
+```
+### AKS cluster
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-aks-cluster-name-secret
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+type: Opaque
+stringData:
+  name: my-aks-cluster-name
+  server: https://192.0.2.2
+  config: |
+    {
+      "execProviderConfig": {
+        "command": "k8xauth",
+        "args": [
+            "aks",
+            "--tenantid",
+            "12345678-1234-1234-1234-123456789abc",
+            "--clientid",
+            "12345678-1234-1234-1234-123456789abc"
+        ],
+        "apiVersion": "client.authentication.k8s.io/v1beta1",
+        "installHint": "k8xauth missing. For installation follow https://github.com/trhyo/k8xauth"
       },
       "tlsClientConfig": {
         "insecure": false,
