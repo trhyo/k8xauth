@@ -10,4 +10,4 @@ jobs:
   markdownlint:
     runs-on: ubuntu-latest
     steps:
-      - run: 'echo "No build required, to be implementes" '
+      - run: 'echo "No build required, to be implemented." '
