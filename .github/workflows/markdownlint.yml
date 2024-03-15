@@ -1,0 +1,13 @@
+name: Pull request check
+
+on:
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - '.github/**'
+
+jobs:
+  markdownlint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'echo "No build required, to be implementes" '
