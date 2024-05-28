@@ -3,7 +3,7 @@ module k8xauth
 go 1.21.6
 
 require (
-	cloud.google.com/go/compute/metadata v0.2.3
+	cloud.google.com/go/compute/metadata v0.3.0
 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.9.2
 	github.com/aws/aws-sdk-go-v2 v1.26.1
 	github.com/aws/aws-sdk-go-v2/config v1.27.11
@@ -48,7 +48,6 @@ require (
 )
 
 require (
-	cloud.google.com/go/compute v1.23.4 // indirect
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.5.1
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.16.1
 	github.com/aws/aws-sdk-go-v2/internal/configsources v1.3.5 // indirect
