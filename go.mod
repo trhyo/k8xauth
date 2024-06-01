@@ -13,8 +13,8 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sts v1.28.6
 	github.com/spf13/cobra v1.8.0
 	github.com/trhyo/azidentity-static-source v0.0.4
-	k8s.io/apimachinery v0.30.0
-	k8s.io/client-go v0.30.0
+	k8s.io/apimachinery v0.30.1
+	k8s.io/client-go v0.30.1
 )
 
 require (
