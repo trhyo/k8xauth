@@ -11,7 +11,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/config v1.27.16
 	github.com/aws/aws-sdk-go-v2/credentials v1.17.16
 	github.com/aws/aws-sdk-go-v2/service/sts v1.28.10
-	github.com/spf13/cobra v1.8.0
+	github.com/spf13/cobra v1.8.1
 	github.com/trhyo/azidentity-static-source v0.0.4
 	k8s.io/apimachinery v0.30.1
 	k8s.io/client-go v0.30.1
