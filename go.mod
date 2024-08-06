@@ -2,7 +2,7 @@ module k8xauth
 
 go 1.22.0
 
-toolchain go1.22.3
+toolchain go1.22.6
 
 require (
 	cloud.google.com/go/compute/metadata v0.3.0
