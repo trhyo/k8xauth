@@ -1,6 +1,7 @@
 package eks
 
 import (
+	"fmt"
 	auth "k8xauth/internal/auth"
 	"k8xauth/internal/credwriter"
 	"k8xauth/internal/logger"
@@ -37,7 +38,7 @@ func getCredentials(o *auth.Options, awsAssumeRoleArn, eksClusterName, stsRegion
 
 	authSource, err := auth.New(o)
 	if err != nil {
-		logger.Log.Error("Failed getting token source: %s", err)
+		logger.Log.Error(fmt.Sprintf("Failed getting token source: %s", err.Error()))
 		os.Exit(1)
 	}
 
@@ -47,19 +48,19 @@ func getCredentials(o *auth.Options, awsAssumeRoleArn, eksClusterName, stsRegion
 
 	sessionIdentifier, err := authSource.GetSessionIdentifier()
 	if err != nil {
-		logger.Log.Error("Couldn't retrieve session identifier %s", err)
+		logger.Log.Error(fmt.Sprintf("Couldn't retrieve session identifier: %s", err.Error()))
 		os.Exit(1)
 	}
 
 	assumeRoleCfg, err := config.LoadDefaultConfig(ctx, config.WithRegion(stsRegion))
 	if err != nil {
-		logger.Log.Error("failed to load default AWS config, %s" + err.Error())
+		logger.Log.Error("failed to load default AWS config: %s" + err.Error())
 		os.Exit(1)
 	}
 
 	identityToken, err := authSource.IdentityTokenRetriever()
 	if err != nil {
-		logger.Log.Error("Failed to get JWT token from GCP metadata, %s" + err.Error())
+		logger.Log.Error("Failed to get JWT token from GCP metadata: %s" + err.Error())
 		os.Exit(1)
 	}
 
@@ -75,7 +76,7 @@ func getCredentials(o *auth.Options, awsAssumeRoleArn, eksClusterName, stsRegion
 
 	awsCredentials, err := awsCredsCache.Retrieve(ctx)
 	if err != nil {
-		logger.Log.Error("Couldn't retrieve AWS credentials %s", err)
+		logger.Log.Error(fmt.Sprintf("Couldn't retrieve AWS credentials %s", err.Error()))
 		os.Exit(1)
 	}
 
@@ -85,7 +86,7 @@ func getCredentials(o *auth.Options, awsAssumeRoleArn, eksClusterName, stsRegion
 		}),
 	)
 	if err != nil {
-		logger.Log.Error("Couldn't load AWS config using retrieved credentials %s", err)
+		logger.Log.Error(fmt.Sprintf("Couldn't load AWS config using retrieved credentials %s", err.Error()))
 		os.Exit(1)
 	}
 
@@ -99,7 +100,7 @@ func getCredentials(o *auth.Options, awsAssumeRoleArn, eksClusterName, stsRegion
 		})
 	})
 	if err != nil {
-		logger.Log.Error("Couldn't presign STS request %s", err)
+		logger.Log.Error(fmt.Sprintf("Couldn't presign STS request %s", err.Error()))
 	}
 
 	token := tokenV1Prefix + base64.RawURLEncoding.EncodeToString([]byte(presignedURLString.URL))
