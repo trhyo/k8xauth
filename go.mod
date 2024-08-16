@@ -5,7 +5,7 @@ go 1.22.0
 toolchain go1.23.0
 
 require (
-	cloud.google.com/go/compute/metadata v0.3.0
+	cloud.google.com/go/compute/metadata v0.5.0
 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.12.0
 	github.com/aws/aws-sdk-go-v2 v1.30.4
 	github.com/aws/aws-sdk-go-v2/config v1.27.28
