@@ -14,8 +14,8 @@ require (
 	github.com/go-jose/go-jose/v3 v3.0.3
 	github.com/spf13/cobra v1.8.1
 	github.com/trhyo/azidentity-static-source v0.0.4
-	k8s.io/apimachinery v0.31.0
-	k8s.io/client-go v0.31.0
+	k8s.io/apimachinery v0.31.2
+	k8s.io/client-go v0.31.2
 )
 
 require (
