@@ -2,8 +2,6 @@ module k8xauth
 
 go 1.23.3
 
-toolchain go1.23.3
-
 require (
 	cloud.google.com/go/compute/metadata v0.5.2
 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.16.0
