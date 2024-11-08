@@ -70,7 +70,7 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.step.sm/crypto v0.51.1
 	golang.org/x/net v0.27.0 // indirect
-	golang.org/x/oauth2 v0.22.0
+	golang.org/x/oauth2 v0.24.0
 	golang.org/x/text v0.16.0 // indirect
 	google.golang.org/api v0.192.0
 	gopkg.in/inf.v0 v0.9.1 // indirect
