@@ -1,4 +1,4 @@
-name: Pull request check
+name: GitHub actions workflow check
 
 on:
   pull_request:
