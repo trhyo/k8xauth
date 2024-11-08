@@ -1,4 +1,4 @@
-name: Pull request check
+name: Go Build Check
 
 on:
   push:
