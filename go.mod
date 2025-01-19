@@ -5,7 +5,7 @@ go 1.23.3
 require (
 	cloud.google.com/go/compute/metadata v0.6.0
 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.17.0
-	github.com/aws/aws-sdk-go-v2 v1.32.7
+	github.com/aws/aws-sdk-go-v2 v1.32.8
 	github.com/aws/aws-sdk-go-v2/config v1.28.8
 	github.com/aws/aws-sdk-go-v2/credentials v1.17.49
 	github.com/aws/aws-sdk-go-v2/service/sts v1.33.4
